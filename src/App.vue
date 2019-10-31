@@ -18,30 +18,30 @@
         </p>
       </div>
     </div>
-    <div id="items-group">
+    <div v-for="item in repos.items" :key="item.id">
       <div class="row d-flex mb-3 align-items-start">
         <div class="col-sm-6 col-lg-3">
           <img
             class="img-fluid d-block img-thumbnail"
-            src="https://images.unsplash.com/photo-1570819782440-f7d16ec89cfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
-            alt="alt text"
+            :src="item.owner.avatar_url"
+            :alt="item.owner.login"
           />
         </div>
         <div class="col">
           <small class="float-sm-right text-muted text-small">
             <font-awesome-icon icon="calendar-check" class="mr-2" />Submitted
             <span>date of creation</span> days ago by
-            <span class="text-primary">name of the owner</span>
+            <span class="text-primary">{{item.owner.login}}</span>
           </small>
-          <h3 class="text-primary">name</h3>
-          <p class="mb-0 mb-2 lead">description</p>
+          <h3 class="text-primary">{{item.name}}</h3>
+          <p class="mb-0 mb-2 lead">{{item.description}}</p>
           <span class="badge badge-primary mr-2 p-1">
             Stars:
-            <span>stars count</span>
+            <span>{{item.stargazers_count}}</span>
           </span>
           <span class="badge badge-primary p-1">
             Issues:
-            <span>issues count</span>
+            <span>{{item.open_issues_count}}</span>
           </span>
         </div>
       </div>
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "app",
@@ -58,6 +59,14 @@ export default {
     return {
       repos: []
     };
+  },
+  mounted() {
+    axios
+      .get(
+        " https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc"
+      )
+      .then(response => (this.repos = response.data));
+    //this gets the results of the last 30 days despite what the current date is.
   },
   components: { FontAwesomeIcon }
 };
