@@ -1,6 +1,6 @@
 # The Most Starred Repos
 
-## I used some common libraries to make life easier
+## I used some common libraries to make my life easier
 
 - **Axios**
 
