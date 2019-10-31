@@ -30,7 +30,7 @@
         <div class="col">
           <small class="float-sm-right text-muted text-small">
             <font-awesome-icon icon="calendar-check" class="mr-2" />Submitted
-            <span>date of creation</span> days ago by
+            <span>{{formattedDate(item.created_at)}}</span> days ago by
             <span class="text-primary">{{item.owner.login}}</span>
           </small>
           <h3 class="text-primary">{{item.name}}</h3>
@@ -52,6 +52,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   name: "app",
@@ -60,10 +61,19 @@ export default {
       repos: []
     };
   },
+  methods: {
+    formattedDate(date) {
+      return moment().diff(new Date(date), "days");
+    }
+  },
   mounted() {
     axios
       .get(
-        " https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc"
+        "https://api.github.com/search/repositories?q=created:>" +
+          moment()
+            .subtract("days", 30)
+            .format("YYYY-MM-DD") +
+          "&sort=stars&order=desc"
       )
       .then(response => (this.repos = response.data));
     //this gets the results of the last 30 days despite what the current date is.
