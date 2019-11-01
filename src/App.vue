@@ -26,7 +26,8 @@
             :src="item.owner.avatar_url"
             :alt="item.owner.login"
           />
-          <a :href="item.owner.html_url" class="stretched-link" :title="item.owner.login"></a>
+          <!-- embed a link in the image element to the repo owner -->
+          <!-- <a :href="item.owner.html_url" class="stretched-link" :title="item.owner.login"></a> -->
         </div>
         <div class="col">
           <small class="float-sm-right text-muted text-small">
