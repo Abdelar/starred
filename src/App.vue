@@ -1,10 +1,10 @@
 <template>
-  <div class="container mt-3">
-    <div class="jumbotron jumbotron-fluid rounded">
+  <div class="container mt-3 text-primary">
+    <div class="jumbotron jumbotron-fluid rounded bg-secondary text-light shadow">
       <div class="container">
         <h1 class="display-4">
           The Most Starred Repos
-          <font-awesome-icon icon="star" class="text-warning" />
+          <font-awesome-icon icon="star" class="text-light" />
         </h1>
         <p class="lead">Submitted in the last 30 days to GitHub.</p>
         <hr class="my-2" />
@@ -20,15 +20,13 @@
     </div>
     <div>
       <!-- giving a feedback when an error occurred -->
-      <div class="alert alert-warning" v-if="error">
-        {{error}}
-      </div>
+      <div class="alert alert-warning" v-if="error">{{error}}</div>
       <!-- listing different repos -->
       <div v-for="item in repos" :key="item.id">
         <div class="row d-flex mb-3 align-items-start">
           <div class="col-sm-6 col-lg-3">
             <img
-              class="img-fluid d-block img-thumbnail"
+              class="img-fluid d-block border border-muted"
               :src="item.owner.avatar_url"
               :alt="item.owner.login"
             />
@@ -104,6 +102,7 @@ export default {
 <style lang="scss">
 // overriding bootstrap default styles
 $primary: #283943;
+$secondary: #ff6c37;
 @import "node_modules/bootstrap/scss/bootstrap";
 img {
   width: 200px;
