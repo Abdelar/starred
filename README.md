@@ -1,5 +1,7 @@
 # The Most Starred Repos
 
+![first capture](screenshots/1.PNG "first capture")
+
 ## I used some common libraries to make my life easier
 
 - **Axios**
@@ -16,10 +18,6 @@
 > Bootstrap is going to make it easier to scaffold and build our application without worrying about a lot of design things and even HTML. So Bootstrap does have some dependencies that we're going to need in addition to it, mainly jQuery. The current version of Bootstrap uses JQuery. We're using version 4 of Bootstrap so it does require this libary. And it also requires something called Popper.JS, which we will install as well. In addition to that, we're going to need a few icons in our application. Bootstrap no longer comes with those icons, so we're going to install the **Font Awesome library**.[See full documentation](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
 ## Screenshots
-
-![first capture](screenshots/1.PNG "first capture")
-
-<hr/>
 
 ![first capture](screenshots/2.PNG "second capture")
 
